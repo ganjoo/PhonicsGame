@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     public Text countText;
 
     public Text winText;
+
+    public Text gameOverText;
 
     private Rigidbody2D rb2d;
 
@@ -24,6 +27,7 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D> () ;
         count = 0;
         winText.text = "";
+        gameOverText.text = "";
         SetCountText();
         audioSource = GetComponent<AudioSource>();
     }
@@ -64,6 +68,13 @@ public class PlayerController : MonoBehaviour {
             collision.collider.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
+        }
+
+        if (collision.collider.gameObject.CompareTag("Bomb"))
+        {
+            collision.collider.gameObject.SetActive(false);
+            Debug.Log("Bombed");
+            gameOverText.text = "GAME OVER";
         }
 
         switch (collision.collider.gameObject.name) {
@@ -198,9 +209,11 @@ public class PlayerController : MonoBehaviour {
                 audioSource.clip = clip;
                 audioSource.Play();
                 break;
-
-
-
+            case "Bomb":
+                clip = (AudioClip)Resources.Load("gameover");
+                audioSource.clip = clip;
+                audioSource.Play();
+                break;
         }
 
     }

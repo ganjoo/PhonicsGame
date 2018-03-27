@@ -13,6 +13,7 @@ public class Ads : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         //Advertisement.Show();
 
     }
