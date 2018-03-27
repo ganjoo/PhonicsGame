@@ -7,13 +7,14 @@ public class Ads : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Advertisement.Initialize("1748818");
+        //Advertisement.Initialize("1748818");
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-       // Advertisement.Show();
+
+        //Advertisement.Show();
 
     }
 }
