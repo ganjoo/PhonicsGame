@@ -30,11 +30,19 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+		#if UNITY_ANDROID
+
+		Vector3 movement = new Vector3 (Input.acceleration.x, 0.0f, 0.0f);
+		rb2d.velocity = movement * speed;
+
+		#else
+
+		float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+		Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rb2d.AddForce(movement * speed);
-    }
+		#endif
+	}
 
 
     void SetCountText ()

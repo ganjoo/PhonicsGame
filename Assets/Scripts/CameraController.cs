@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         offset = transform.position - player.transform.position;
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 	}
 	
 	// Update is called once per frame

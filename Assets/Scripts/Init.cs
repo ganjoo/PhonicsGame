@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
 using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
+
 
 public class Init : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Advertisement.Initialize("1748818");
 	}
 	public int speed;
 	
@@ -64,7 +67,9 @@ public class Init : MonoBehaviour {
 			// Print current access token's granted permissions
 			foreach (string perm in aToken.Permissions) {
 				Debug.Log(perm);
+			
 			}
+			SceneManager.LoadScene ("MainScene");
 		} else {
 			Debug.Log("User cancelled login");
 		}
